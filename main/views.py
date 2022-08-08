@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import ToDoList, Item
 
-def index(response):
-    return HttpResponse("<h1>Hello World</h1>")
+def index(response, name):
+    ls = ToDoList.objects.all(name=name)
+    return HttpResponse("<h1>%s</h1>" %ls.name)
 
-def v1(response):
-    return HttpResponse("<h1>we are in v1</h1>")
